@@ -5,6 +5,7 @@ import UserInput from '../UserInput/UserInput';
 import './Chat.css';
 
 function Chat() {
+    const [isLoading, setIsLoading] = useState(false);
     const [messages, setMessages] = useState([
         {
           type: 'bot',
@@ -21,6 +22,9 @@ function Chat() {
       };
       
       const fetchWeatherData = async (city) => {
+
+        setIsLoading(true);
+
         try {
           const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
           const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -44,12 +48,23 @@ function Chat() {
       
           setMessages([...messages, { type: 'bot', text: weatherMessage }]);
         } catch (error) {
-          console.error(error);
-          setMessages([
-            ...messages,
-            { type: 'bot', text: `An error occurred while fetching the weather data for ${city}. Please try again.` },
-          ]);
-        }
+            console.error(error);
+        
+            // Check if the error is due to an invalid city name (status code 404)
+            if (error.response && error.response.status === 404) {
+              setMessages([
+                ...messages,
+                { type: 'bot', text: `The city "${city}" was not found. Please check the spelling and try again.` },
+              ]);
+            } else {
+              setMessages([
+                ...messages,
+                { type: 'bot', text: `An error occurred while fetching the weather data for ${city}. Please try again.` },
+              ]);
+            }
+          }
+
+        setIsLoading(false);
       };      
       
 
@@ -58,6 +73,7 @@ function Chat() {
       {messages.map((message, index) => (
         <Message key={index} type={message.type} text={message.text} />
         ))}
+        {isLoading && <div className="loading-message">Loading weather data...</div>}
 
         <UserInput onSubmit={(input) => handleUserInput(input)} />
 
