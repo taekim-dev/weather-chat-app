@@ -169,19 +169,6 @@ function Chat() {
     );
   };
   
-  const renderHistory = () => {
-    const historyMessages = messages.filter((message) => message.weatherMessage);
-  
-    return historyMessages.map((message, index) => (
-      <div key={index} className="history-message">
-        <Message type="user" text={message.city} />
-        <Message type="bot" text={message.weatherMessage} />
-      </div>
-    ));
-  };
-  
-
-  
   return (
     <div className="Chat">
       <div className="welcome-message">Welcome to Weather Chat!</div>
@@ -189,9 +176,9 @@ function Chat() {
       {isLoading && <div className="loading-message">Loading weather data...</div>}
       <UserInput onSubmit={(input) => handleUserInput(input)} />
       {renderLatestResult()}
-      {renderHistory()}
     </div>
   );
+  
 }
 
 export default Chat;
