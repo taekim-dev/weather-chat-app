@@ -6,14 +6,10 @@ import './Chat.css';
 
 function Chat() {
   const [isLoading, setIsLoading] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      type: 'bot',
-      text: 'Welcome to Weather Chat! Type the name of a city to get the weather information.',
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const handleUserInput = (city) => {
+    
     // Add the user's message to the messages array
     setMessages([...messages, { type: 'user', text: city }]);
 
@@ -35,7 +31,11 @@ function Chat() {
       ]);
 
       const currentWeatherData = currentWeatherResponse.data;
+      const country = currentWeatherData.sys.country;
       const forecastWeatherData = forecastWeatherResponse.data;
+
+      const cleanedCity = city.replace(/[^a-zA-Z\s]/g, "").trim();
+      const capitalizedCity = cleanedCity.toUpperCase();
 
       // Process current weather data
       const weatherInfo = {
@@ -45,18 +45,24 @@ function Chat() {
         humidity: currentWeatherData.main.humidity,
       };
 
-      const weatherMessage = `Current weather in ${city}:
-        - Description: ${weatherInfo.description}
-        - Temperature: ${weatherInfo.temperature}°C
-        - Feels like: ${weatherInfo.feelsLike}°C
-        - Humidity: ${weatherInfo.humidity}%`;
+      const weatherMessage = `Current weather in ${capitalizedCity}, ${country}:
+      - Weather: ${weatherInfo.description}
+      - Temperature: ${weatherInfo.temperature}°C
+      - Feels like: ${weatherInfo.feelsLike}°C
+      - Humidity: ${weatherInfo.humidity}%`;
+  
 
       // Process forecast weather data
-      const forecastData = forecastWeatherData.list.slice(0, 5).map((item) => ({
+      // Process forecast weather data
+    const forecastData = forecastWeatherData.list
+        .filter((item, index) => index % 8 === 0) // Pick one forecast for each day (every 8th item, assuming 3-hour intervals)
+        .slice(0, 5) // Take only the first 5 days
+        .map((item) => ({
         date: new Date(item.dt * 1000).toLocaleDateString(),
         description: item.weather[0].description,
         temperature: item.main.temp.toFixed(1),
-      }));
+    }));
+
 
       const forecastMessage = forecastData
         .map(
@@ -103,69 +109,80 @@ function Chat() {
     }
 
     return (
-      <table className="forecast-table">
-        <thead>
-          <tr>
-            {forecastData.map((day) => (
-              <th key={day.date}>{day.date}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {forecastData.map((day) => (
-              <td key={day.date}>{day.weather}</td>
-            ))}
-          </tr>
-          <tr>
-            {forecastData.map((day) => (
-              <td key={day.date}>{day.temperature}°C</td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
-    );
+        <table className="forecast-table">
+          <thead>
+            <tr>
+              {forecastData.map((day) => (
+                <th key={day.date}>{day.date}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {forecastData.map((day) => (
+                <td key={day.date}>
+                  {day.description}
+                  <br />
+                  {day.temperature}°C
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      );
   };
 
   const renderLatestResult = () => {
     const latestCurrentWeather = messages[messages.length - 2]?.text;
     const latestForecastWeather = messages[messages.length - 1]?.text;
-
+  
     if (!latestCurrentWeather || !latestForecastWeather) {
       return null;
     }
-
+  
+    const currentWeatherLines = latestCurrentWeather.split('\n');
+    const cityName = currentWeatherLines[0].replace('Current weather in ', '').trim();
+    const weatherInfo = currentWeatherLines.slice(1);
+  
     return (
       <div className="latest-result">
-        <div className="latest-current-weather">
-          <strong>{latestCurrentWeather.split('\n')[0]}</strong>
-          {latestCurrentWeather
-            .split('\n')
-            .slice(1)
-            .join('\n')}
-        </div>
+        <h2>{cityName}</h2>
+        <table className="current-weather-table">
+          <thead>
+            <tr>
+              <th>Weather</th>
+              <th>Temperature</th>
+              <th>Feels Like</th>
+              <th>Humidity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {weatherInfo.map((info, index) => (
+                <td key={index}>{info.replace(/.*?:\s*/, '')}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
         <div className="latest-forecast-weather">{latestForecastWeather}</div>
         {renderForecastTable()}
       </div>
     );
   };
+  
   const renderHistory = () => {
-    const historyMessages = messages.slice(0, -2);
-
-    if (historyMessages.length === 0) {
-      return null;
-    }
-
-    return (
-      <div className="history">
-        <h3>History</h3>
-        {historyMessages.map((message, index) => (
-          <Message key={index} type={message.type} text={message.text} />
-        ))}
+    const historyMessages = messages.filter((message) => message.weatherMessage);
+  
+    return historyMessages.map((message, index) => (
+      <div key={index} className="history-message">
+        <Message type="user" text={message.city} />
+        <Message type="bot" text={message.weatherMessage} />
       </div>
-    );
+    ));
   };
+  
 
+  
   return (
     <div className="Chat">
       <div className="welcome-message">Welcome to Weather Chat!</div>
