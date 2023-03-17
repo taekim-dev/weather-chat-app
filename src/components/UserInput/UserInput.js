@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
-import './UserInput.css';
 
-function UserInput({ onSubmit }) {
-  const [input, setInput] = useState('');
+const UserInput = ({ onSubmit }) => {
+  const [city, setCity] = useState('');
+
+  const handleChange = (e) => {
+    setCity(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(input);
-    setInput('');
+    onSubmit(city);
+    setCity('');
   };
 
   return (
-    <form className="UserInput" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type a city name..."
-      />
-      <button type="submit">Send</button>
-    </form>
+    <div className="user-input">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={city}
+          onChange={handleChange}
+          placeholder="Enter a city name"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
-}
+};
 
 export default UserInput;

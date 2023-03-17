@@ -1,0 +1,52 @@
+.Chat {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .welcome-message {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .instructions {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .loading-message {
+    font-style: italic;
+    color: #666;
+  }
+  
+  .show-forecast-button {
+    margin-top: 10px;
+  }
+  
+  .forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .forecast-table th,
+  .forecast-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .forecast-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .current-weather {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
