@@ -121,9 +121,8 @@ function Chat() {
             <tr>
               {forecastData.map((day) => (
                 <td key={day.date}>
-                  {day.description}
-                  <br />
-                  {day.temperature}°C
+                {day.description}
+                <div style={{ marginTop: '8px' }}>{day.temperature}°C</div>
                 </td>
               ))}
             </tr>
