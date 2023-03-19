@@ -232,6 +232,11 @@ function Chat() {
       {isLoading && <div className="loading-message">Loading weather data...</div>}
       <UserInput onSubmit={(input) => handleUserInput(input)} />
       {renderLatestResult()}
+      <div className="source-link">
+      <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
+        Powered by OpenWeather
+      </a>
+    </div>
     </div>
   );
   
