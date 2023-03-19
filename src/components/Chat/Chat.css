@@ -81,6 +81,7 @@ body {
   max-width: 300px;
   height: auto;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .source-link {
