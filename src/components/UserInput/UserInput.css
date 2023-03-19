@@ -1,33 +1,35 @@
-.UserInput {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 10px;
-  }
-  
-  .UserInput input {
-    font-size: 1.1rem;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  .UserInput button {
-    background-color: rgba(255, 255, 255, 0.1); /* Update this line */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-  }
-  
-  .UserInput button:hover {
-    background-color: #81c784;
-  }
-  
+.user-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.user-input,
+.submit-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.5rem;
+}
+
+.user-input {
+  flex-grow: 1;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.submit-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #555;
+}

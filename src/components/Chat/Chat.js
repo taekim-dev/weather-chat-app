@@ -109,7 +109,7 @@ function Chat() {
     }
 
     return (
-        <table className="forecast-table">
+      <table className={`forecast-table table-text-color`}>
           <thead>
             <tr>
               {forecastData.map((day) => (
@@ -146,7 +146,7 @@ function Chat() {
     return (
       <div className="latest-result">
         <h2>{cityName}</h2>
-        <table className="current-weather-table">
+        <table className={`current-weather-table table-text-color`}>
           <thead>
             <tr>
               <th>Weather</th>
@@ -216,7 +216,11 @@ function Chat() {
   
     return (
       <div className="weather-images" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '90%', margin: '0 auto' }}>
-        <img src={`/assets/${temperatureImage}`} alt={temperatureCategory} style={{ width: '45%', margin: '2.5%' }} />
+        <img
+          src={`/assets/${temperatureImage}`}
+          alt={temperatureCategory}
+          style={{ maxWidth: '100%', maxHeight: 'auto', margin: '2.5%' }}
+        />
       </div>
     );
   };

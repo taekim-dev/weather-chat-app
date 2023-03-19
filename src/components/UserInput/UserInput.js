@@ -4,23 +4,29 @@ import './UserInput.css';
 function UserInput({ onSubmit }) {
   const [input, setInput] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.trim()) {
-      onSubmit(input);
-      setInput('');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!input.trim()) {
+      return;
     }
+
+    onSubmit(input);
+    setInput('');
   };
 
   return (
-    <form className="UserInput" onSubmit={handleSubmit}>
+    <form className="user-input-form" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Type the name of a city"
+        className="user-input"
+        placeholder="Enter city name"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(event) => setInput(event.target.value)}
       />
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit-btn">
+        Get Weather
+      </button>
     </form>
   );
 }
