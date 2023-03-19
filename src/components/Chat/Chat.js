@@ -165,6 +165,58 @@ function Chat() {
         </table>
         <div className="latest-forecast-weather">{latestForecastWeather}</div>
         {renderForecastTable()}
+        {renderImages()}
+      </div>
+    );
+  };
+
+  const renderImages = () => {
+    const latestCurrentWeather = messages[messages.length - 2]?.text;
+  
+    if (!latestCurrentWeather) {
+      return null;
+    }
+  
+    const currentWeatherLines = latestCurrentWeather.split('\n');
+    
+    const feelsLikeLine = currentWeatherLines[3];
+    
+    if (!feelsLikeLine) {
+      return null;
+    }
+  
+    // Use a regular expression to extract the temperature value
+    const temperatureMatch = feelsLikeLine.match(/-?\d+(\.\d+)?/);
+    const feelsLikeTemperature = temperatureMatch ? parseFloat(temperatureMatch[0]) : null;
+  
+    if (isNaN(feelsLikeTemperature)) {
+      return null;
+    }
+  
+    const getRandomInt = (min, max) => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+    
+  
+    let temperatureCategory;
+    if (feelsLikeTemperature > 40) temperatureCategory = 'extremely-hot';
+    else if (feelsLikeTemperature >= 30) temperatureCategory = 'hot';
+    else if (feelsLikeTemperature >= 20) temperatureCategory = 'warm';
+    else if (feelsLikeTemperature >= 10) temperatureCategory = 'cool';
+    else if (feelsLikeTemperature >= 0) temperatureCategory = 'cold';
+    else temperatureCategory = 'freezing';
+  
+    const randomIndex = getRandomInt(1, 3);
+    const temperatureImage = `temp-${temperatureCategory}${randomIndex}.jpg`;
+
+  
+    
+  
+    return (
+      <div className="weather-images" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '90%', margin: '0 auto' }}>
+        <img src={`/assets/${temperatureImage}`} alt={temperatureCategory} style={{ width: '45%', margin: '2.5%' }} />
       </div>
     );
   };
