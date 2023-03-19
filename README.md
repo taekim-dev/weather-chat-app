@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Weather Chat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Weather Chat is a friendly and easy-to-use web application that allows users to retrieve current weather and 5-day forecasts for cities around the world. By simply typing the name of a city, the application provides detailed weather information, including temperature, humidity, and a brief description of the weather conditions. The app also displays relevant images based on the temperature category, giving users a visual cue about the current weather.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Current weather information for any city worldwide
+- 5-day weather forecasts with daily summaries
+- Temperature-based images for a more engaging user experience
+- Color-coded temperature categories for quick reference
+- Clean and intuitive user interface
+- Responsive design that works well on various devices
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+These instructions will help you set up the project on your local machine for development and testing purposes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+Before you begin, make sure you have the following software installed on your computer:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+git clone https://github.com/yourusername/weather-chat.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Change your working directory to the project folder:
 
-### `npm run eject`
+cd weather-chat
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Install the required dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Create a `.env` file in the root folder of the project and add your OpenWeatherMap API key:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+REACT_APP_OPENWEATHERMAP_API_KEY=your_api_key_here
 
-## Learn More
+Replace `your_api_key_here` with your actual API key. If you don't have one, you can obtain it by signing up for a free account on the [OpenWeatherMap website](https://openweathermap.org/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm start
 
-### Code Splitting
+This will launch the application in your default web browser. By default, the app will be accessible at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Built With
 
-### Analyzing the Bundle Size
+- [React](https://reactjs.org/) - A popular JavaScript library for building user interfaces
+- [axios](https://axios-http.com/) - A promise-based HTTP client for the browser and Node.js
+- [OpenWeatherMap API](https://openweathermap.org/api) - A weather data API providing current weather and forecast data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+We appreciate any contributions to the Weather Chat project! Feel free to submit pull requests, report bugs, or suggest new features by creating an issue.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Acknowledgments
 
-### Deployment
+- OpenWeatherMap for providing the weather data
+- Unsplash for the beautiful weather-related images
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Developed by Tae Kim. Thank you for your interest in Weather Chat! We hope you enjoy using the application and find it helpful in your daily life. 
