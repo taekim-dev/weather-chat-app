@@ -1,52 +1,126 @@
+body {
+  background-image: linear-gradient(to right, #a9c9ff, #ffffff);
+  font-family: 'Roboto', sans-serif;
+}
+
 .Chat {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  .welcome-message {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .instructions {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  .loading-message {
-    font-style: italic;
-    color: #666;
-  }
-  
-  .show-forecast-button {
-    margin-top: 10px;
-  }
-  
-  .forecast-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .forecast-table th,
-  .forecast-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .forecast-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  .current-weather {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.welcome-message,
+.instructions {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.loading-message {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.latest-result {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.latest-result h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.latest-forecast-weather {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.current-weather-table,
+.forecast-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+.current-weather-table th,
+.forecast-table th {
+  background-color: #333;
+  color: white;
+  padding: 0.5rem;
+}
+
+.current-weather-table td,
+.forecast-table td {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+}
+
+.weather-images {
+  margin-top: 1.5rem;
+}
+
+.weather-images img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.source-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 15px;
+}
+
+
+.source-link a {
+  color: #000;
+  text-decoration: none;
+}
+
+.source-link a:hover {
+  text-decoration: underline;
+}
+
+.temperature-category.extremely-hot {
+  color: red;
+}
+
+.temperature-category.hot {
+  color: rgb(255, 85, 0);
+}
+
+.temperature-category.warm {
+  color: #ffb507;
+}
+
+.temperature-category.cool {
+  color: #45ad48;
+}
+
+.temperature-category.cold {
+  color: #2196F3;
+}
+
+.temperature-category.freezing {
+  color: #2440da;
+}
