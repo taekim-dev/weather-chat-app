@@ -71,6 +71,19 @@ function Chat() {
         )
         .join('\n\n');
 
+        const currentWeatherLines = weatherMessage.split('\n');
+        const feelsLikeLine = currentWeatherLines[3];
+        const feelsLikeTemperature = parseFloat(feelsLikeLine.match(/-?\d+(\.\d+)?/)[0]);
+
+
+        let temperatureCategory;
+        if (feelsLikeTemperature > 40) temperatureCategory = 'extremely-hot';
+        else if (feelsLikeTemperature >= 30) temperatureCategory = 'hot';
+        else if (feelsLikeTemperature >= 20) temperatureCategory = 'warm';
+        else if (feelsLikeTemperature >= 10) temperatureCategory = 'cool';
+        else if (feelsLikeTemperature >= 0) temperatureCategory = 'cold';
+        else temperatureCategory = 'freezing';
+        
       // Set messages
       setMessages([
         ...messages,
@@ -79,6 +92,7 @@ function Chat() {
           type: 'bot',
           text: '5-Day Forecast:',
           forecastData: forecastData,
+          temperatureCategory: temperatureCategory,
         },
       ]);
     } catch (error) {
@@ -142,10 +156,12 @@ function Chat() {
     const currentWeatherLines = latestCurrentWeather.split('\n');
     const cityName = currentWeatherLines[0].replace('Current weather in ', '').trim();
     const weatherInfo = currentWeatherLines.slice(1);
+
+    const temperatureCategory = messages[messages.length - 1]?.temperatureCategory?.toUpperCase();
   
     return (
       <div className="latest-result">
-        <h2>{cityName}</h2>
+        <h2>{cityName} <span className={`temperature-category ${temperatureCategory?.toLowerCase()}`}>{temperatureCategory}</span></h2>
         <table className={`current-weather-table table-text-color`}>
           <thead>
             <tr>

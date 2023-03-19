@@ -99,3 +99,27 @@ body {
 .source-link a:hover {
   text-decoration: underline;
 }
+
+.temperature-category.extremely-hot {
+  color: red;
+}
+
+.temperature-category.hot {
+  color: rgb(255, 85, 0);
+}
+
+.temperature-category.warm {
+  color: #FFC107;
+}
+
+.temperature-category.cool {
+  color: #4CAF50;
+}
+
+.temperature-category.cold {
+  color: #2196F3;
+}
+
+.temperature-category.freezing {
+  color: #3F51B5;
+}
