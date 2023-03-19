@@ -26,25 +26,25 @@ Before you begin, make sure you have the following software installed on your co
 
 1. Clone the repository:
 
-git clone https://github.com/yourusername/weather-chat.git
+    git clone https://github.com/yourusername/weather-chat.git
 
 2. Change your working directory to the project folder:
 
-cd weather-chat
+    cd weather-chat
 
 3. Install the required dependencies:
 
-npm install
+    npm install
 
 4. Create a `.env` file in the root folder of the project and add your OpenWeatherMap API key:
 
-REACT_APP_OPENWEATHERMAP_API_KEY=your_api_key_here
+    REACT_APP_OPENWEATHERMAP_API_KEY=your_api_key_here
 
-Replace `your_api_key_here` with your actual API key. If you don't have one, you can obtain it by signing up for a free account on the [OpenWeatherMap website](https://openweathermap.org/).
+    Replace `your_api_key_here` with your actual API key. If you don't have one, you can obtain it by signing up for a free account on the [OpenWeatherMap website](https://openweathermap.org/).
 
 5. Start the development server:
 
-npm start
+    npm start
 
 This will launch the application in your default web browser. By default, the app will be accessible at `http://localhost:3000`.
 
