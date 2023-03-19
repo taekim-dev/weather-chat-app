@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Message from '../Message/Message';
 import UserInput from '../UserInput/UserInput';
 import './Chat.css';
 
@@ -64,25 +63,13 @@ function Chat() {
     }));
 
 
-      const forecastMessage = forecastData
-        .map(
-          (item) =>
-            `Date: ${item.date}\n- Description: ${item.description}\n- Temperature: ${item.temperature}°C`
-        )
-        .join('\n\n');
 
         const currentWeatherLines = weatherMessage.split('\n');
         const feelsLikeLine = currentWeatherLines[3];
         const feelsLikeTemperature = parseFloat(feelsLikeLine.match(/-?\d+(\.\d+)?/)[0]);
 
 
-        let temperatureCategory;
-        if (feelsLikeTemperature > 40) temperatureCategory = 'extremely-hot';
-        else if (feelsLikeTemperature >= 30) temperatureCategory = 'hot';
-        else if (feelsLikeTemperature >= 20) temperatureCategory = 'warm';
-        else if (feelsLikeTemperature >= 10) temperatureCategory = 'cool';
-        else if (feelsLikeTemperature >= 0) temperatureCategory = 'cold';
-        else temperatureCategory = 'freezing';
+        const temperatureCategory = determineTemperatureCategory(feelsLikeTemperature);
         
       // Set messages
       setMessages([
@@ -113,6 +100,15 @@ function Chat() {
     }
 
     setIsLoading(false);
+  };
+
+  const determineTemperatureCategory = (temperature) => {
+    if (temperature > 40) return 'extremely-hot';
+    if (temperature >= 30) return 'hot';
+    if (temperature >= 20) return 'warm';
+    if (temperature >= 10) return 'cool';
+    if (temperature >= 0) return 'cold';
+    return 'freezing';
   };
 
   const renderForecastTable = () => {
@@ -216,19 +212,10 @@ function Chat() {
     };
     
   
-    let temperatureCategory;
-    if (feelsLikeTemperature > 40) temperatureCategory = 'extremely-hot';
-    else if (feelsLikeTemperature >= 30) temperatureCategory = 'hot';
-    else if (feelsLikeTemperature >= 20) temperatureCategory = 'warm';
-    else if (feelsLikeTemperature >= 10) temperatureCategory = 'cool';
-    else if (feelsLikeTemperature >= 0) temperatureCategory = 'cold';
-    else temperatureCategory = 'freezing';
-  
+    const temperatureCategory = determineTemperatureCategory(feelsLikeTemperature);  
     const randomIndex = getRandomInt(1, 3);
     const temperatureImage = `temp-${temperatureCategory}${randomIndex}.jpg`;
 
-  
-    
   
     return (
       <div className="weather-images" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '90%', margin: '0 auto' }}>
@@ -240,6 +227,8 @@ function Chat() {
       </div>
     );
   };
+
+  
   
   return (
     <div className="Chat">
@@ -259,3 +248,4 @@ function Chat() {
 }
 
 export default Chat;
+

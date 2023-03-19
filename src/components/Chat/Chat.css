@@ -109,11 +109,11 @@ body {
 }
 
 .temperature-category.warm {
-  color: #FFC107;
+  color: #ffb507;
 }
 
 .temperature-category.cool {
-  color: #4CAF50;
+  color: #45ad48;
 }
 
 .temperature-category.cold {
@@ -121,5 +121,5 @@ body {
 }
 
 .temperature-category.freezing {
-  color: #3F51B5;
+  color: #2440da;
 }
