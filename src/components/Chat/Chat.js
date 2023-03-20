@@ -1,10 +1,10 @@
-require('dotenv').config()
 import React, { useState } from 'react';
 import axios from 'axios';
 import UserInput from '../UserInput/UserInput';
 import './Chat.css';
 
 function Chat() {
+  
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
 
@@ -21,7 +21,7 @@ function Chat() {
     setIsLoading(true);
 
     try {
-      const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+      const apiKey = 'a7ce691dcfbfcc5f48abaa34f62e979b'; //process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
       const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
