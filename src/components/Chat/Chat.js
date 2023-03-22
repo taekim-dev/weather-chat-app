@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import UserInput from '../UserInput/UserInput';
+import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 import './Chat.css';
 
 function Chat() {
@@ -228,24 +229,21 @@ function Chat() {
       </div>
     );
   };
-
-  
   
   return (
     <div className="Chat">
       <div className="welcome-message">Welcome to Weather Chat!</div>
       <div className="instructions">Type the name of a city to get the weather information.</div>
-      {isLoading && <div className="loading-message">Loading weather data...</div>}
+      {isLoading ? <SkeletonLoader /> : null}
       <UserInput onSubmit={(input) => handleUserInput(input)} />
       {renderLatestResult()}
       <div className="source-link">
-      <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
-        Powered by OpenWeather
-      </a>
-    </div>
+        <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
+          Powered by OpenWeather
+        </a>
+      </div>
     </div>
   );
-  
 }
 
 export default Chat;
