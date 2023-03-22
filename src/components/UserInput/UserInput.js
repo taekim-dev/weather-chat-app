@@ -1,32 +1,77 @@
 import React, { useState } from 'react';
+import { useCombobox } from 'downshift';
+import cityList from './filteredCityList.json'; // Import the filtered city list
 import './UserInput.css';
 
 function UserInput({ onSubmit }) {
-  const [input, setInput] = useState('');
+  const [filteredCities, setFilteredCities] = useState(cityList);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const {
+    isOpen,
+    getMenuProps,
+    getInputProps,
+    getComboboxProps,
+    highlightedIndex,
+    getItemProps,
+    setInputValue,
+  } = useCombobox({
+    items: filteredCities.slice(0, 20), // Limit the number of suggestions to 20
+    onInputValueChange: ({ inputValue }) => {
+      if (!inputValue) {
+        setFilteredCities([]);
+        return;
+      }
+      const filtered = cityList
+        .filter((city) =>
+          city.name.toLowerCase().startsWith(inputValue.toLowerCase())
+        )
+        .reduce((uniqueCities, city) => {
+          if (!uniqueCities.some((c) => c.name === city.name && c.country === city.country)) {
+            uniqueCities.push(city);
+          }
+          return uniqueCities;
+        }, []);
 
-    if (!input.trim()) {
-      return;
-    }
-
-    onSubmit(input);
-    setInput('');
-  };
+      setFilteredCities(filtered);
+    },
+    onSelectedItemChange: ({ selectedItem }) => {
+      if (selectedItem) {
+        onSubmit(selectedItem.name);
+        setInputValue(''); // Clear the input field
+      }
+    },
+  });
 
   return (
-    <form className="user-input-form" onSubmit={handleSubmit}>
+    <form className="user-input-form" {...getComboboxProps()} onSubmit={(e) => e.preventDefault()}>
       <input
+        {...getInputProps()}
         type="text"
         className="user-input"
         placeholder="Enter city name"
-        value={input}
-        onChange={(event) => setInput(event.target.value)}
       />
-      <button type="submit" className="submit-btn">
+      <button type="submit" className="submit-btn" onClick={() => onSubmit(getInputProps().value)}>
         Get Weather
       </button>
+      <ul
+        className="suggestions-list"
+        {...getMenuProps()}
+        style={{
+          border: isOpen && getInputProps().value ? '1px solid #e0e0e0' : 'none',
+        }}
+      >
+        {isOpen &&
+          getInputProps().value &&
+          filteredCities.slice(0, 20).map((city, index) => (
+            <li
+              {...getItemProps({ item: city, index })}
+              key={city.id}
+              className={highlightedIndex === index ? 'suggestion-item highlighted-item' : 'suggestion-item'}
+            >
+              {city.name}, {city.country}
+            </li>
+          ))}
+      </ul>
     </form>
   );
 }

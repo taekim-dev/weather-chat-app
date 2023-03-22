@@ -3,6 +3,8 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+  position: relative;
+  width: calc(100% - 2rem);
 }
 
 .user-input,
@@ -32,4 +34,38 @@
 
 .submit-btn:hover {
   background-color: #555;
+}
+
+.suggestions-list {
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  width: 30%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 0.5rem;
+  margin-left: 150px;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-item {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #272626;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.suggestion-item:hover {
+  background-color: #d7e3f5;
+  color: #3b3e42;
+}
+
+.highlighted-item {
+  background-color: rgb(36, 90, 126);
+  color: white;
 }
