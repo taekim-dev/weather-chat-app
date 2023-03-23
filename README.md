@@ -10,6 +10,12 @@ Weather Chat is a friendly and easy-to-use web application that allows users to 
 - Color-coded temperature categories for quick reference
 - Clean and intuitive user interface
 - Responsive design that works well on various devices
+- Auto-complete functionality for city name input
+- Skeleton loading for improved user experience during data fetching
+
+## Live Version
+
+A live version of the application is available at [https://weather-chat.netlify.app/](https://weather-chat.netlify.app/).
 
 ## Getting Started
 
@@ -69,4 +75,4 @@ This project is licensed under the MIT License.
 
 ---
 
-Developed by Tae Kim. Thank you for your interest in Weather Chat! We hope you enjoy using the application and find it helpful in your daily life. 
+Developed by Tae Kim. Thank you for your interest in Weather Chat! We hope you enjoy using the application and find it helpful in your daily life.
