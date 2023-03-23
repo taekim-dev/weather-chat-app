@@ -52,8 +52,6 @@ function Chat() {
       - Feels like: ${weatherInfo.feelsLike}°C
       - Humidity: ${weatherInfo.humidity}%`;
   
-
-      // Process forecast weather data
       // Process forecast weather data
     const forecastData = forecastWeatherData.list
         .filter((item, index) => index % 8 === 0) // Pick one forecast for each day (every 8th item, assuming 3-hour intervals)
@@ -64,12 +62,9 @@ function Chat() {
         temperature: item.main.temp.toFixed(1),
     }));
 
-
-
         const currentWeatherLines = weatherMessage.split('\n');
         const feelsLikeLine = currentWeatherLines[3];
         const feelsLikeTemperature = parseFloat(feelsLikeLine.match(/-?\d+(\.\d+)?/)[0]);
-
 
         const temperatureCategory = determineTemperatureCategory(feelsLikeTemperature);
         
@@ -234,9 +229,9 @@ function Chat() {
     <div className="Chat">
       <div className="welcome-message">Welcome to Weather Chat!</div>
       <div className="instructions">Type the name of a city to get the weather information.</div>
-      {isLoading ? <SkeletonLoader /> : null}
       <UserInput onSubmit={(input) => handleUserInput(input)} />
-      {renderLatestResult()}
+      {isLoading ? <SkeletonLoader /> : null}
+      {!isLoading ? renderLatestResult() : null}
       <div className="source-link">
         <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
           Powered by OpenWeather
@@ -244,7 +239,7 @@ function Chat() {
       </div>
     </div>
   );
+  
 }
 
 export default Chat;
-
