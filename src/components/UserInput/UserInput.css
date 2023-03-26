@@ -52,6 +52,17 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* mobile devices */
+@media (max-width: 767px) {
+  .suggestions-list {
+    width: 60%;
+    margin-left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
 .suggestion-item {
   padding: 0.5rem;
   font-size: 1.2rem;
