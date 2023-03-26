@@ -226,17 +226,19 @@ function Chat() {
   };
   
   return (
-    <div className="Chat">
-      <div className="welcome-message">Welcome to Weather Chat!</div>
-      <div className="instructions">Type the name of a city to get the weather information.</div>
-      <UserInput onSubmit={(input) => handleUserInput(input)} />
-      {isLoading ? <SkeletonLoader /> : null}
-      {!isLoading ? renderLatestResult() : null}
-      <div className="source-link">
-        <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
-          Powered by OpenWeather
-        </a>
+    <div>
+      <div className="Chat">
+        <div className="welcome-message">Welcome to Weather Chat!</div>
+        <div className="instructions">Type the name of a city to get the weather information.</div>
+        <UserInput onSubmit={(input) => handleUserInput(input)} />
+        {isLoading ? <SkeletonLoader /> : null}
+        {!isLoading ? renderLatestResult() : null}
       </div>
+      <div className="source-link">
+          <a href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
+            Powered by OpenWeather
+          </a>
+        </div>
     </div>
   );
   
