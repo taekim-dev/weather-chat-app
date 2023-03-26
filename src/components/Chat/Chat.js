@@ -154,29 +154,55 @@ function Chat() {
   
     return (
       <div className="latest-result">
-        <h2>{cityName} <span className={`temperature-category ${temperatureCategory?.toLowerCase()}`}>{temperatureCategory}</span></h2>
-        <table className={`current-weather-table table-text-color`}>
-          <thead>
-            <tr>
-              <th>Weather</th>
-              <th>Temperature</th>
-              <th>Feels Like</th>
-              <th>Humidity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {weatherInfo.map((info, index) => (
-                <td key={index}>{info.replace(/.*?:\s*/, '')}</td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+        <h2>
+          {cityName}{" "}
+          <span
+            className={`temperature-category ${temperatureCategory?.toLowerCase()}`}
+          >
+            {temperatureCategory}
+          </span>
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <table className={`current-weather-table table-text-color`}>
+            <thead>
+              <tr>
+                <th>Weather</th>
+                <th>Temperature</th>
+                <th>Feels Like</th>
+                <th>Humidity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {weatherInfo.map((info, index) => (
+                  <td key={index}>{info.replace(/.*?:\s*/, "")}</td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div className="latest-forecast-weather">{latestForecastWeather}</div>
-        {renderForecastTable()}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          {renderForecastTable()}
+        </div>
         {renderImages()}
       </div>
     );
+    
   };
 
   const renderImages = () => {
