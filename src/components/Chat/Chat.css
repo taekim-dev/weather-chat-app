@@ -4,29 +4,29 @@ body {
 }
 
 .Chat {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 1rem;
   position: relative;
 }
 
 .welcome-message,
 .instructions {
-  text-align: center;
-  margin-bottom: 1rem;
+  color: #333;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .loading-message {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
   color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .latest-result {
@@ -35,40 +35,40 @@ body {
 }
 
 .latest-result h2 {
+  color: #333;
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
   margin-bottom: 1rem;
 }
 
 .latest-forecast-weather {
+  color: #333;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
   margin-bottom: 1rem;
 }
 
 .weather-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 @media (max-width: 767px) {
   .current-weather-table,
   .forecast-table {
     display: block;
-    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
   }
 }
 
 .current-weather-table,
 .forecast-table {
-  width: 100%;
-  margin-bottom: 1rem;
   border-collapse: collapse;
   font-size: 1.1rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .current-weather-table th,
@@ -81,10 +81,10 @@ body {
 .current-weather-table td,
 .forecast-table td {
   border: 1px solid #999;
-  padding: 0.5rem;
-  text-align: center;
   color: #333;
   font-weight: bold;
+  padding: 0.5rem;
+  text-align: center;
 }
 
 .weather-images {
@@ -92,17 +92,17 @@ body {
 }
 
 .weather-images img {
-  width: 100%;
-  max-width: 300px;
+  border-radius: 8px;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .source-link {
-  position: relative;
-  font-size: 15px;
   bottom: 20px;
+  font-size: 15px;
+  position: relative;
 }
 
 .source-link a {
