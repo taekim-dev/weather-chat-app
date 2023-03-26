@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useCombobox } from 'downshift';
-import cityList from './filteredCityList.json'; // Import the filtered city list
 import './UserInput.css';
+
+import cityList from './filteredCityList.json'; // Import the filtered city list
 
 function UserInput({ onSubmit }) {
   const [filteredCities, setFilteredCities] = useState(cityList);
@@ -15,7 +16,7 @@ function UserInput({ onSubmit }) {
     getItemProps,
     setInputValue,
   } = useCombobox({
-    items: filteredCities.slice(0, 20), // Limit the number of suggestions to 20
+    items: filteredCities.slice(0, 20),
     onInputValueChange: ({ inputValue }) => {
       if (!inputValue) {
         setFilteredCities([]);
@@ -37,7 +38,7 @@ function UserInput({ onSubmit }) {
     onSelectedItemChange: ({ selectedItem }) => {
       if (selectedItem) {
         onSubmit(selectedItem.name);
-        setInputValue(''); // Clear the input field
+        setInputValue('');
       }
     },
   });
