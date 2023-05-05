@@ -17,6 +17,12 @@ function Chat() {
     dispatch(toggleUnit());
   };
 
+  function celsiusToFahrenheit(celsius) {
+    const fahrenheit = (celsius * 9/5) + 32;
+    return parseFloat(fahrenheit.toFixed(1));
+  }
+  
+
   const handleUserInput = (city) => {
     
     // Add the user's message to the messages array
@@ -137,7 +143,10 @@ function Chat() {
               {forecastData.map((day) => (
                 <td key={day.date}>
                 {day.description}
-                <div style={{ marginTop: '8px' }}>{day.temperature}°C</div>
+                <div style={{ marginTop: '8px' }}>
+                  {isCelcius ? day.temperature : celsiusToFahrenheit(day.temperature)}
+                  {isCelcius ? '°C' : '°F'}
+                  </div>
                 </td>
               ))}
             </tr>
@@ -204,11 +213,21 @@ function Chat() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {weatherInfo.map((info, index) => (
-                  <td key={index}>{info.replace(/.*?:\s*/, "")}</td>
-                ))}
-              </tr>
+            <tr>
+              {weatherInfo.map((info, index) => {
+                const value = info.replace(/.*?:\s*/, "");
+                let displayValue = value;
+
+                if (index === 1 || index === 2) {
+                  const temperature = parseFloat(value);
+                  displayValue = isCelcius
+                    ? `${temperature.toFixed(1)}°C`
+                    : `${celsiusToFahrenheit(temperature).toFixed(1)}°F`;
+                }
+
+                return <td key={index}>{displayValue}</td>;
+              })}
+            </tr>
             </tbody>
           </table>
         </div>
