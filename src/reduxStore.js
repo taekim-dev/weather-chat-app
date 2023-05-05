@@ -11,7 +11,7 @@ const toggleUnit = () => ({
 
 // Reducer
 const initialState = {
-  isCelcius: true,
+  isCelcius: false,
 };
 
 const weatherUnitReducer = (state = initialState, action) => {

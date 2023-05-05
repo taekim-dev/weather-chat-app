@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import UserInput from '../UserInput/UserInput';
 import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleUnit } from '../../reduxStore';
 import './Chat.css';
 
 function Chat() {
   
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
+  const isCelcius = useSelector((state) => state.isCelcius);
+  const dispatch = useDispatch();
+
+  const handleUnitToggle = () => {
+    dispatch(toggleUnit());
+  };
 
   const handleUserInput = (city) => {
     
@@ -138,6 +146,22 @@ function Chat() {
       );
   };
 
+  const renderUnitToggle = () => {
+    return (
+      <div className="unit-toggle-wrapper"> 
+        <div className="toggle-switch-container">
+        <span className="unit-text">Celsius</span>
+          <label className="switch">
+            <input type="checkbox" checked={!isCelcius} onChange={handleUnitToggle} />
+            <span className="slider round"></span>
+          </label>
+          <span className="unit-text"> Fahrenheit </span>
+        </div>
+      </div> 
+    );
+  }
+  
+
   const renderLatestResult = () => {
     const latestCurrentWeather = messages[messages.length - 2]?.text;
     const latestForecastWeather = messages[messages.length - 1]?.text;
@@ -256,7 +280,9 @@ function Chat() {
       <div className="Chat">
         <div className="welcome-message">Welcome to Weather Chat!</div>
         <div className="instructions">Type the name of a city to get the weather information.</div>
+        {renderUnitToggle()}
         <UserInput onSubmit={(input) => handleUserInput(input)} />
+
         {isLoading ? <SkeletonLoader /> : null}
         {!isLoading ? renderLatestResult() : null}
       </div>
