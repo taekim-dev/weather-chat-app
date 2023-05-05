@@ -43,6 +43,13 @@ function UserInput({ onSubmit }) {
     },
   });
 
+  const handleButtonClick = () => {
+    const inputValue = getInputProps().value;
+    if (typeof inputValue === 'string') {
+      onSubmit(inputValue);
+    }
+  };
+
   return (
     <form className="user-input-form" {...getComboboxProps()} onSubmit={(e) => e.preventDefault()}>
       <input
@@ -51,7 +58,7 @@ function UserInput({ onSubmit }) {
         className="user-input"
         placeholder="Enter city name"
       />
-      <button type="submit" className="submit-btn" onClick={() => onSubmit(getInputProps().value)}>
+      <button type="submit" className="submit-btn" onClick={handleButtonClick}>
         Get Weather
       </button>
       <ul
