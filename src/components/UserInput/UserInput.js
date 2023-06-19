@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useCombobox } from 'downshift';
 import './UserInput.css';
-
-import cityList from './filteredCityList.json'; // Import the filtered city list
+import cityList from './filteredCityList.json';
 
 function UserInput({ onSubmit }) {
   const [filteredCities, setFilteredCities] = useState(cityList);
