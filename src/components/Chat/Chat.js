@@ -82,7 +82,6 @@ function Chat() {
 
         const temperatureCategory = determineTemperatureCategory(feelsLikeTemperature);
         
-      // Set messages
       setMessages([
         ...messages,
         { type: 'bot', text: weatherMessage },
@@ -169,7 +168,6 @@ function Chat() {
       </div> 
     );
   }
-  
 
   const renderLatestResult = () => {
     const latestCurrentWeather = messages[messages.length - 2]?.text;
