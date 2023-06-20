@@ -3,6 +3,7 @@ import { useCombobox } from 'downshift';
 import './UserInput.css';
 import cityList from './filteredCityList.json';
 
+// This component is used to get user input and show suggestions.
 function UserInput({ onSubmit }) {
   const [filteredCities, setFilteredCities] = useState(cityList);
 
@@ -42,6 +43,7 @@ function UserInput({ onSubmit }) {
     },
   });
 
+  // This function is used to handle the click event on the submit button.
   const handleButtonClick = () => {
     const inputValue = getInputProps().value;
     if (typeof inputValue === 'string') {

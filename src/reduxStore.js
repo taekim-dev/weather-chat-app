@@ -1,5 +1,3 @@
-// src/reduxStore.js
-
 import { createStore } from 'redux';
 
 // Actions

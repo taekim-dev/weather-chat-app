@@ -1,6 +1,7 @@
 import React from 'react';
 import './SkeletonLoader.css';
 
+// This component is used to show a loading state while the app is fetching data.
 function SkeletonLoader() {
   return (
     <div className="skeleton-loader">
