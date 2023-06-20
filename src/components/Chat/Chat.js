@@ -17,12 +17,12 @@ function Chat() {
     dispatch(toggleUnit());
   };
 
+  // A function to convert celsius to fahrenheit
   function celsiusToFahrenheit(celsius) {
     const fahrenheit = (celsius * 9/5) + 32;
     return parseFloat(fahrenheit.toFixed(1));
   }
   
-
   const handleUserInput = (city) => {
     
     // Add the user's message to the messages array
@@ -112,6 +112,7 @@ function Chat() {
     setIsLoading(false);
   };
 
+  // determines the temperatur category based on the feels like temperature
   const determineTemperatureCategory = (temperature) => {
     if (temperature > 40) return 'extremely-hot';
     if (temperature >= 30) return 'hot';
@@ -121,6 +122,7 @@ function Chat() {
     return 'freezing';
   };
 
+  // renders the forecast table
   const renderForecastTable = () => {
     const forecastData = messages[messages.length - 1]?.forecastData;
 
@@ -154,6 +156,7 @@ function Chat() {
       );
   };
 
+  // renders the unit toggle (Celsius/Fahrenheit)
   const renderUnitToggle = () => {
     return (
       <div className="unit-toggle-wrapper"> 
@@ -169,6 +172,7 @@ function Chat() {
     );
   }
 
+  // renders the latest result
   const renderLatestResult = () => {
     const latestCurrentWeather = messages[messages.length - 2]?.text;
     const latestForecastWeather = messages[messages.length - 1]?.text;
@@ -246,6 +250,7 @@ function Chat() {
     
   };
 
+  // renders the images
   const renderImages = () => {
     const latestCurrentWeather = messages[messages.length - 2]?.text;
   
@@ -269,6 +274,7 @@ function Chat() {
       return null;
     }
   
+    // A function to generate a random integer between min and max (inclusive)
     const getRandomInt = (min, max) => {
       min = Math.ceil(min);
       max = Math.floor(max);
