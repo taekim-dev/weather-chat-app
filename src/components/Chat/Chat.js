@@ -275,11 +275,11 @@ function Chat() {
 
   
     return (
-      <div className="weather-images" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '90%', margin: '0 auto' }}>
+      <div className="weather-images" >
         <img
           src={`/assets/${temperatureImage}`}
           alt={temperatureCategory}
-          style={{ maxWidth: '100%', maxHeight: 'auto', margin: '2.5%' }}
+          className="weather-image"
         />
       </div>
     );

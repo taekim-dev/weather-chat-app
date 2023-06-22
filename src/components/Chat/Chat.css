@@ -221,3 +221,17 @@ input:checked + .slider:before {
   align-items: center;
   width: 100%;
 }
+
+.weather-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.weather-images .weather-image {
+  max-width: 100%;
+  max-height: auto;
+  margin: 2.5%;
+}
