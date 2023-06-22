@@ -210,3 +210,6 @@ input:checked + .slider:before {
   color:rgb(0, 0, 0)
 }
 
+.temperature-info {
+  margin-top: 8px;
+}

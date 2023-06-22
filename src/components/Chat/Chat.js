@@ -142,11 +142,11 @@ function Chat() {
           <tbody>
             <tr>
               {forecastData.map((day) => (
-                <td key={day.date}>
-                {day.description}
-                <div style={{ marginTop: '8px' }}>
-                  {isCelcius ? day.temperature : celsiusToFahrenheit(day.temperature)}
-                  {isCelcius ? '°C' : '°F'}
+                <td key={day.date} className="temperature-info">
+                  {day.description}
+                  <div className="temperature-value">
+                    {isCelcius ? day.temperature : celsiusToFahrenheit(day.temperature)}
+                    {isCelcius ? '°C' : '°F'}
                   </div>
                 </td>
               ))}
