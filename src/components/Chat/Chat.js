@@ -197,13 +197,7 @@ function Chat() {
             {temperatureCategory}
           </span>
         </h2>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
+        <div className = "current-weather-container"
         >
           <table className={`current-weather-table table-text-color`}>
             <thead>
@@ -234,14 +228,7 @@ function Chat() {
           </table>
         </div>
         <div className="latest-forecast-weather">{latestForecastWeather}</div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
+        <div className="forecast-container">
           {renderForecastTable()}
         </div>
         {renderImages()}

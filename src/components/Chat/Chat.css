@@ -213,3 +213,11 @@ input:checked + .slider:before {
 .temperature-info {
   margin-top: 8px;
 }
+
+.current-weather-container,
+.forecast-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
