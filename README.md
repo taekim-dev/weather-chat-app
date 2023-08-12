@@ -32,7 +32,7 @@ Before you begin, make sure you have the following software installed on your co
 
 1. Clone the repository:
 
-    git clone https://github.com/yourusername/weather-chat.git
+    git clone https://github.com/taekim-dev/weather-chat-app
 
 2. Change your working directory to the project folder:
 
